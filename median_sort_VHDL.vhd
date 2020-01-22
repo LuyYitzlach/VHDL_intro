@@ -20,47 +20,56 @@ end median_sort_VHDL;
 
 architecture arch of median_sort_VHDL is
 --declarations (type, signal, record, constants, components)
-
+signal ii,jj,kk : integer;
+--signal j : integer;
+signal temp : std_logic_vector(numSize-1 downto 0);
+signal temp_array : buffArray(numSize-1 downto 0)(buffSize-1 downto 0); 
+constant half : integer := buffSize/2;
 
 --procedures and functions
 begin
 process
-procedure sorting (
-		signal toSortArray : in buffArray(numSize-1 downto 0)(buffSize-1 downto 0);
-		signal sortedArray : out buffArray(numSize-1 downto 0)(buffSize-1 downto 0)
-		) is
+begin 
+-- procedure sorting (
+		-- signal toSortArray : in buffArray(numSize-1 downto 0)(buffSize-1 downto 0);
+		-- signal sortedArray : out buffArray(numSize-1 downto 0)(buffSize-1 downto 0)
+		-- ) is
 --signals for use within procedure
-signal i,j,k : integer;
-signal temp : std_logic_vector(numSize-1 downto 0);
-signal temp_array : buffArray(numSize-1 downto 0)(buffSize-1 downto 0); 
-begin
---put instructions for procedure here
 
-	for k in buffSize/2 downto 1 loop
-		for i in 0 to buffSize loop
-			j <= i+k;
-			if (j < buffSize-1) then
-				if (temp_array(i) > temp_array(j)) then
-				temp <= temp_array(i);
-				temp_array(i) <= temp_array(j);
-				temp_array(j) <= temp; --how does this work if it's synchronous?
+--begin
+--put instructions for procedure here
+ 
+
+	for k in 3 downto 1 loop --for k  in  half downto 1 loop
+	kk <= k;
+		for i  in 0 to 33 loop --for i  in 0 to buffSize loop
+			ii <= i;
+			jj <= ii+kk;
+			if (jj < buffSize-1) then
+				if (temp_array(ii) > temp_array(jj)) then
+				temp <= temp_array(ii);
+				wait for 10 ns; --add?
+				temp_array(ii) <= temp_array(jj);
+				temp_array(jj) <= temp; --how does this work if it's synchronous?
 				--temp_array(i) <= temp_array(j);
 				--temp_array(j) <= temp_array(i);
 				end if;
 			end if;
-		i <= i+1;
+		ii <= ii+1;
 		end loop;
-	k <= k-1;
-	exit when (k = 0);
+	kk <= kk-1;
+	exit when (kk = 0);
 	end loop;
-sortedArray = temp_array;
-end sorting; --procedure ends
+	
+	
+--sortedArray = temp_array;
+--end sorting; --procedure ends
 end process;
 
 --processes, with their (local) variables
 --instantiation/components (these could also be in declaration section)
 --combinatorial expressions
-temp_array <= toSortArray;
-sorting(toSortArray => inBuff, sortedArray => outBuff);
+temp_array <= inBuff;
+--sorting(toSortArray => inBuff, sortedArray => outBuff);
 median <= outBuff(2); --should really use division and flooring to find middle...
 end arch;
