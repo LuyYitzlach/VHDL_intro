@@ -1,0 +1,686 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/admin/Documents/FPGA_projects/ultrasonic1
+Parray_setup
+Z0 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+w1579644255
+Z3 dC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro
+8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd
+FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd
+l0
+L5
+V=OJm2I[Zi=6K_g1cgMAWj3
+!s100 gFCUmi[VCX5iz6NGn32mT1
+Z4 OV;C;10.5b;63
+33
+!s110 1579709438
+!i10b 1
+!s108 1579709438.000000
+!s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd|
+!s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd|
+!i113 1
+Z5 o-work work -2008 -explicit
+Z6 tExplicit 1 CvgOpt 0
+Ebuffervhdl
+Z7 w1579788850
+Z8 DPx4 work 11 array_setup 0 22 =OJm2I[Zi=6K_g1cgMAWj3
+R0
+R1
+R2
+R3
+Z9 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd
+Z10 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd
+l0
+L8
+VCezXlVE3ao^R08;n5iim?2
+!s100 R69LZm58UI1F7DiG33f733
+R4
+33
+Z11 !s110 1579788915
+!i10b 1
+Z12 !s108 1579788915.000000
+Z13 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd|
+Z14 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd|
+!i113 1
+R5
+R6
+Aarch_name
+Z15 DEx4 work 10 sep_sorter 0 22 DklH<2_:?<S?>NSM^3k700
+R8
+R0
+R1
+R2
+Z16 DEx4 work 10 buffervhdl 0 22 CezXlVE3ao^R08;n5iim?2
+l36
+L21
+VH`d7a7JSG?GPonTB^SXaa2
+!s100 l8]:`]X0i5C22X^d3SmTI1
+R4
+33
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R5
+R6
+Eclocktick
+Z17 w1579461301
+R0
+R1
+R2
+R3
+Z18 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd
+Z19 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd
+l0
+L5
+VL_2SR95N5Kf[43W@YHg0R3
+!s100 T9MlCdY1DfdYb;@j6NNNR2
+R4
+33
+Z20 !s110 1579749181
+!i10b 1
+Z21 !s108 1579749181.000000
+Z22 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd|
+Z23 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd|
+!i113 1
+R5
+R6
+Aarch
+R0
+R1
+R2
+Z24 DEx4 work 9 clocktick 0 22 L_2SR95N5Kf[43W@YHg0R3
+l22
+L18
+VVI4Y83:_3]WjbWLlD]]D90
+!s100 <cL0b60D[>BN8UTi_N2S;3
+R4
+33
+R20
+!i10b 1
+R21
+R22
+R23
+!i113 1
+R5
+R6
+Eexample_module
+Z25 w1578005500
+R0
+R1
+R2
+R3
+Z26 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd
+Z27 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd
+l0
+L20
+VRMoJli[d=G`401:bFB?]50
+!s100 ZB`ShY47BmE6Zo^c4UQk_3
+R4
+32
+Z28 !s110 1579709436
+!i10b 1
+Z29 !s108 1579709436.000000
+Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd|
+Z31 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd|
+!i113 1
+Z32 o-work work -2002 -explicit
+R6
+Aarch_1
+R0
+R1
+R2
+DEx4 work 14 example_module 0 22 RMoJli[d=G`401:bFB?]50
+l99
+L43
+V2c5hXzW9mfg5OaH:YLO7=0
+!s100 aL?0_jNe`fD:=K?PVaO4?0
+R4
+32
+R28
+!i10b 1
+R29
+R30
+R31
+!i113 1
+R32
+R6
+Ehextosevensegment
+Z33 w1579479971
+R0
+R1
+R2
+R3
+Z34 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd
+Z35 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd
+l0
+L5
+VJTf>HmRm^35jY:?Xb41z_0
+!s100 ?WfPlbdi_:CEfc9eR@I0@3
+R4
+32
+R28
+!i10b 1
+R29
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd|
+Z37 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd|
+!i113 1
+R32
+R6
+Aarch
+R0
+R1
+R2
+Z38 DEx4 work 17 hextosevensegment 0 22 JTf>HmRm^35jY:?Xb41z_0
+l15
+L13
+V1LzLcX;EKjTC[Q5n<3b8l2
+!s100 WS;AS2Z?3Wa255T9NF9FE1
+R4
+32
+R28
+!i10b 1
+R29
+R36
+R37
+!i113 1
+R32
+R6
+Ei2c_master
+Z39 w1579554915
+Z40 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z41 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R1
+R2
+R3
+Z42 8C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd
+Z43 FC:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd
+l0
+L7
+V<W`?hTQTgKha0FQ=o:mzz0
+!s100 U_bEDb7ac[HNMnDFdo>G53
+R4
+33
+Z44 !s110 1579709437
+!i10b 1
+Z45 !s108 1579709437.000000
+Z46 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd|
+Z47 !s107 C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd|
+!i113 1
+R5
+R6
+Alogic
+R40
+R41
+R1
+R2
+DEx4 work 10 i2c_master 0 22 <W`?hTQTgKha0FQ=o:mzz0
+l40
+L25
+VokNC2SKP>A?GNYBoLSc`@3
+!s100 :D[i7Gb^=ocITbkNeYn]F2
+R4
+33
+R44
+!i10b 1
+R45
+R46
+R47
+!i113 1
+R5
+R6
+Emedian_sort_vhdl
+Z48 w1579746864
+R8
+R0
+R1
+R2
+R3
+Z49 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd
+Z50 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd
+l0
+L8
+V0IG?0ACJRJ<S;Adn4A1FF3
+!s100 la8S3c>:eD@fLj06AJoEi2
+R4
+33
+Z51 !s110 1579746867
+!i10b 1
+Z52 !s108 1579746867.000000
+Z53 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd|
+Z54 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd|
+!i113 1
+R5
+R6
+Aarch
+R8
+R0
+R1
+R2
+DEx4 work 16 median_sort_vhdl 0 22 0IG?0ACJRJ<S;Adn4A1FF3
+l64
+L23
+VM^M8IMDje`<<;e53[K=ho3
+!s100 hNMb5cb7M3OQFinOOj_^T1
+R4
+33
+R51
+!i10b 1
+R52
+R53
+R54
+!i113 1
+R5
+R6
+Emedian_tb_vhdl
+Z55 w1579735233
+R0
+R1
+R2
+R3
+Z56 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd
+Z57 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd
+l0
+L7
+VcM_Xom@A71E]dPB_OBEeJ1
+!s100 H:T8ZMM_]I07M]GcP5Rze2
+R4
+33
+Z58 !s110 1579735238
+!i10b 1
+Z59 !s108 1579735238.000000
+Z60 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd|
+Z61 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd|
+!i113 1
+R5
+R6
+Aarch_name
+R8
+R16
+R0
+R1
+R2
+DEx4 work 14 median_tb_vhdl 0 22 cM_Xom@A71E]dPB_OBEeJ1
+l19
+L10
+V;_n8OFFVITj1I0Xh67UUD1
+!s100 EXF@mXSAj[njeO?HUF_<a3
+R4
+33
+R58
+!i10b 1
+R59
+R60
+R61
+!i113 1
+R5
+R6
+Eselector
+Z62 w1578601894
+R0
+R1
+R2
+R3
+Z63 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd
+Z64 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd
+l0
+L5
+VPgXZ2>b1aX3nCmeSQjNZI2
+!s100 mHSYKkG`i?I<7kc`=h[]=3
+R4
+32
+R28
+!i10b 1
+R29
+Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd|
+Z66 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd|
+!i113 1
+R32
+R6
+Aarch_sel
+R0
+R1
+R2
+Z67 DEx4 work 8 selector 0 22 PgXZ2>b1aX3nCmeSQjNZI2
+l17
+L14
+V84_^ka<MnJLPfHK5`89Kh3
+!s100 5N`Y3:b3nb2EMK[I[KX^C2
+R4
+32
+R28
+!i10b 1
+R29
+R65
+R66
+!i113 1
+R32
+R6
+Esep_median
+w1579748572
+R8
+R0
+R1
+R2
+R3
+8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd
+FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd
+l0
+L7
+V;Q@5K17fTN>C^Dg:F_9`93
+!s100 LS<iBMHb]ck20LSl:E>]T3
+R4
+33
+!s110 1579749186
+!i10b 1
+!s108 1579749186.000000
+!s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd|
+!s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd|
+!i113 1
+R5
+R6
+Esep_sorter
+Z68 w1579802671
+R8
+R0
+R1
+R2
+R3
+Z69 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sort_as_entity.vhd
+Z70 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sort_as_entity.vhd
+l0
+L8
+VDklH<2_:?<S?>NSM^3k700
+!s100 CQ:1NVcV?mBGY5U0G4S@W3
+R4
+33
+Z71 !s110 1579802745
+!i10b 1
+Z72 !s108 1579802745.000000
+Z73 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sort_as_entity.vhd|
+Z74 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sort_as_entity.vhd|
+!i113 1
+R5
+R6
+Aarch
+R8
+R0
+R1
+R2
+R15
+l27
+L21
+ViajmO>S9TIzj?72XDgz=?3
+!s100 6j8>bo3c1YkoK5BEG]6P<1
+R4
+33
+R71
+!i10b 1
+R72
+R73
+R74
+!i113 1
+R5
+R6
+Etick_tb
+Z75 w1579111925
+R0
+R1
+R2
+R3
+Z76 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd
+Z77 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd
+l0
+L7
+V`Z2ZXQ1l8mb60hF:3iH7J3
+!s100 f4QChFAZ8UJ=fbBCa1MRG0
+R4
+33
+R44
+!i10b 1
+R45
+Z78 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd|
+Z79 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd|
+!i113 1
+R5
+R6
+Aarch_tick_tb
+R24
+R0
+R1
+R2
+DEx4 work 7 tick_tb 0 22 `Z2ZXQ1l8mb60hF:3iH7J3
+l22
+L10
+Vh8Ja]g>U8YO=f4N@FKCV82
+!s100 `HK2P81A_Z[^K6;BnTWAj1
+R4
+33
+R44
+!i10b 1
+R45
+R78
+R79
+!i113 1
+R5
+R6
+Etrial_1_tb
+Z80 w1578617794
+R0
+R1
+R2
+R3
+Z81 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd
+Z82 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd
+l0
+L6
+VLTkOilZCVYa5EIMcO=U?72
+!s100 22kFVen:zQ[`eo]PhnY1j2
+R4
+32
+R28
+!i10b 1
+R29
+Z83 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd|
+Z84 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd|
+!i113 1
+R32
+R6
+Atb
+R67
+R0
+R1
+R2
+DEx4 work 10 trial_1_tb 0 22 LTkOilZCVYa5EIMcO=U?72
+l27
+L12
+VzjlS98llH8BIEkC59<?ii1
+!s100 7BC3c@[:i0l8I=WMPR43U0
+R4
+32
+R28
+!i10b 1
+R29
+R83
+R84
+!i113 1
+R32
+R6
+Evariable_vs_signal
+Z85 w1576769520
+R0
+R1
+R2
+R3
+Z86 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd
+Z87 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd
+l0
+L5
+VO36i<[HVL57fD^;Jb0oM00
+!s100 I^6lcT4>lRQ?i6zkZHMVj3
+R4
+32
+Z88 !s110 1579709435
+!i10b 1
+Z89 !s108 1579709435.000000
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd|
+Z91 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd|
+!i113 1
+R32
+R6
+Artl
+R0
+R1
+R2
+DEx4 work 18 variable_vs_signal 0 22 O36i<[HVL57fD^;Jb0oM00
+l20
+L13
+V3W4a^9lV5L:iH9fAY2^7[2
+!s100 JAEYV0zl6OWJf??WLz^8k1
+R4
+32
+R88
+!i10b 1
+R89
+R90
+R91
+!i113 1
+R32
+R6
+Evariable_vs_signal_tb
+Z92 w1576768380
+R0
+R1
+R2
+R3
+Z93 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd
+Z94 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd
+l0
+L5
+VcCdJC[6W@i0@MZdam>4U]3
+!s100 S2dLWZngegP`DEWW78<;90
+R4
+32
+R28
+!i10b 1
+R89
+Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd|
+Z96 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd|
+!i113 1
+R32
+R6
+Abehave
+R0
+R1
+R2
+DEx4 work 21 variable_vs_signal_tb 0 22 cCdJC[6W@i0@MZdam>4U]3
+l24
+L8
+VT:b<6d:`<<b6@Ho=idE1R2
+!s100 7>TKF<j>`h`>j?e?R7X?P1
+R4
+32
+R28
+!i10b 1
+R89
+R95
+R96
+!i113 1
+R32
+R6
+Evend_tb
+Z97 w1579458639
+R0
+R1
+R2
+R3
+Z98 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd
+Z99 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd
+l0
+L5
+V9C0FJG3MYH`@[U6kzilZS0
+!s100 PT0<flCDPiQCLXL>iR1Fj3
+R4
+33
+R44
+!i10b 1
+R45
+Z100 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd|
+Z101 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd|
+!i113 1
+R5
+R6
+Aarch_vend
+Z102 DEx4 work 7 vending 0 22 1P?>g_9Boh<dhgif9bZgc2
+R0
+R1
+R2
+DEx4 work 7 vend_tb 0 22 9C0FJG3MYH`@[U6kzilZS0
+l26
+L8
+VN<P5GmVRh319kHPBCDZUD2
+!s100 :0;X;5M4l6R86mKc4OK5Y0
+R4
+33
+R44
+!i10b 1
+R45
+R100
+R101
+!i113 1
+R5
+R6
+Evending
+Z103 w1579460885
+R0
+R1
+R2
+R3
+Z104 8C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd
+Z105 FC:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd
+l0
+L6
+V1P?>g_9Boh<dhgif9bZgc2
+!s100 JA3NTa2_P5GO2Yad<_4F_3
+R4
+32
+R28
+!i10b 1
+R29
+Z106 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd|
+Z107 !s107 C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd|
+!i113 1
+R32
+R6
+Aarch
+R38
+R24
+R0
+R1
+R2
+R102
+l38
+L24
+VUiRRD:20TeBQl9k2A^Y9n1
+!s100 6<_[H0Qk5LiiJm>CD^U592
+R4
+32
+R28
+!i10b 1
+R29
+R106
+R107
+!i113 1
+R32
+R6

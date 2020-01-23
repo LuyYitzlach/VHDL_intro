@@ -1,0 +1,158 @@
+C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/HEX_to_SS.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity hexToSevenSegment
+-- Compiling architecture arch of hexToSevenSegment
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity variable_vs_signal
+-- Compiling architecture rtl of variable_vs_signal
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity selector
+-- Compiling architecture arch_sel of selector
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity vending
+-- Compiling architecture arch of vending
+-- Loading entity clockTick
+-- Loading entity hexToSevenSegment
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_tb_VHDL.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity median_tb_VHDL
+-- Compiling architecture arch_name of median_tb_VHDL
+-- Loading package array_setup
+-- Loading entity bufferVHDL
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/tick_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tick_tb
+-- Compiling architecture arch_tick_tb of tick_tb
+-- Loading entity clockTick
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/array_package.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package array_setup
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_2_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity vend_tb
+-- Compiling architecture arch_vend of vend_tb
+-- Loading entity vending
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/sep_median.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package array_setup
+-- Compiling entity sep_median
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/template1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity example_module
+-- Compiling architecture arch_1 of example_module
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/clockTick.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity clockTick
+-- Compiling architecture arch of clockTick
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/bufferVHDL.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package array_setup
+-- Compiling entity bufferVHDL
+-- Compiling architecture arch_name of bufferVHDL
+-- Loading entity sep_sorter
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/intro_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity variable_vs_signal_tb
+-- Compiling architecture behave of variable_vs_signal_tb
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/trial_1_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity trial_1_tb
+-- Compiling architecture tb of trial_1_tb
+-- Loading entity selector
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/i2c_master.vhd {2 {vcom -work work -2008 -explicit -stats=none {C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity i2c_master
+-- Compiling architecture logic of i2c_master
+** Warning: C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd(57): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+** Warning: C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd(60): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+** Warning: C:\Users\admin\Documents\SelfStudy_FPGA\VHDL_intro\i2c_master.vhd(63): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+
+} {} {}} C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/admin/Documents/SelfStudy_FPGA/VHDL_intro/median_sort_VHDL.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package array_setup
+-- Compiling entity median_sort_VHDL
+-- Compiling architecture arch of median_sort_VHDL
+
+} {} {}}

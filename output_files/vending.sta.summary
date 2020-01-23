@@ -1,0 +1,149 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clock_50'
+Slack : -5.054
+TNS   : -97.852
+
+Type  : Slow 1100mV 85C Model Setup 'clockTick:clk_div|clkPulse'
+Slack : -3.897
+TNS   : -111.719
+
+Type  : Slow 1100mV 85C Model Setup 'add_five'
+Slack : -3.702
+TNS   : -3.702
+
+Type  : Slow 1100mV 85C Model Hold 'clock_50'
+Slack : 0.449
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clockTick:clk_div|clkPulse'
+Slack : 0.561
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'add_five'
+Slack : 0.605
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'add_five'
+Slack : -0.598
+TNS   : -2.207
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clockTick:clk_div|clkPulse'
+Slack : -0.538
+TNS   : -26.902
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock_50'
+Slack : -0.538
+TNS   : -25.528
+
+Type  : Slow 1100mV 0C Model Setup 'clock_50'
+Slack : -5.197
+TNS   : -95.577
+
+Type  : Slow 1100mV 0C Model Setup 'clockTick:clk_div|clkPulse'
+Slack : -3.956
+TNS   : -111.909
+
+Type  : Slow 1100mV 0C Model Setup 'add_five'
+Slack : -3.670
+TNS   : -3.670
+
+Type  : Slow 1100mV 0C Model Hold 'clock_50'
+Slack : 0.343
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'add_five'
+Slack : 0.481
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clockTick:clk_div|clkPulse'
+Slack : 0.590
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'add_five'
+Slack : -0.667
+TNS   : -2.550
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clockTick:clk_div|clkPulse'
+Slack : -0.538
+TNS   : -26.517
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : -0.538
+TNS   : -26.100
+
+Type  : Fast 1100mV 85C Model Setup 'clock_50'
+Slack : -2.809
+TNS   : -37.843
+
+Type  : Fast 1100mV 85C Model Setup 'clockTick:clk_div|clkPulse'
+Slack : -2.125
+TNS   : -60.316
+
+Type  : Fast 1100mV 85C Model Setup 'add_five'
+Slack : -1.476
+TNS   : -1.476
+
+Type  : Fast 1100mV 85C Model Hold 'add_five'
+Slack : 0.081
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clockTick:clk_div|clkPulse'
+Slack : 0.171
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clock_50'
+Slack : 0.203
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'add_five'
+Slack : -0.384
+TNS   : -1.509
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock_50'
+Slack : -0.361
+TNS   : -3.371
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clockTick:clk_div|clkPulse'
+Slack : 0.022
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'clock_50'
+Slack : -2.494
+TNS   : -31.960
+
+Type  : Fast 1100mV 0C Model Setup 'clockTick:clk_div|clkPulse'
+Slack : -2.065
+TNS   : -59.232
+
+Type  : Fast 1100mV 0C Model Setup 'add_five'
+Slack : -1.179
+TNS   : -1.179
+
+Type  : Fast 1100mV 0C Model Hold 'add_five'
+Slack : -0.085
+TNS   : -0.085
+
+Type  : Fast 1100mV 0C Model Hold 'clockTick:clk_div|clkPulse'
+Slack : 0.159
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clock_50'
+Slack : 0.191
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'add_five'
+Slack : -0.365
+TNS   : -1.337
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : -0.352
+TNS   : -3.401
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clockTick:clk_div|clkPulse'
+Slack : 0.055
+TNS   : 0.000
+
+------------------------------------------------------------

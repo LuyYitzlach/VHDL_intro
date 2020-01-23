@@ -1,0 +1,14 @@
+
+State Machine - |vending|vend_state_reg
+Name vend_state_reg.tenD vend_state_reg.nineD vend_state_reg.eightD vend_state_reg.sevenD vend_state_reg.sixD vend_state_reg.fiveD vend_state_reg.fourD vend_state_reg.threeD vend_state_reg.twoD vend_state_reg.oneD vend_state_reg.zeroD 
+vend_state_reg.zeroD 0 0 0 0 0 0 0 0 0 0 0 
+vend_state_reg.oneD 0 0 0 0 0 0 0 0 0 1 1 
+vend_state_reg.twoD 0 0 0 0 0 0 0 0 1 0 1 
+vend_state_reg.threeD 0 0 0 0 0 0 0 1 0 0 1 
+vend_state_reg.fourD 0 0 0 0 0 0 1 0 0 0 1 
+vend_state_reg.fiveD 0 0 0 0 0 1 0 0 0 0 1 
+vend_state_reg.sixD 0 0 0 0 1 0 0 0 0 0 1 
+vend_state_reg.sevenD 0 0 0 1 0 0 0 0 0 0 1 
+vend_state_reg.eightD 0 0 1 0 0 0 0 0 0 0 1 
+vend_state_reg.nineD 0 1 0 0 0 0 0 0 0 0 1 
+vend_state_reg.tenD 1 0 0 0 0 0 0 0 0 0 1 

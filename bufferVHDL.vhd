@@ -36,14 +36,14 @@ signal sortnow : std_logic;
 begin
 
 --instantiation of median sorter
-MSB: entity work.median_sort_VHDL
+MSB: entity work.sep_sorter
 generic map(
 	   numSize => numSize, buffSize => buffSize)
 port map ( 
 		inBuff => tempInBuff,
-		clock  => clock,
+		clock  => sortnow,
 		outBuff => tempOutBuff,
-		median => median
+		s_median => median
 		); --separate by ; but no ; on last item in () –omit in tb
 
 --processes
@@ -75,8 +75,6 @@ end process;
 set_output : process
 begin
 --outWire <= tempOutBuff(count);
---o_median <= median;
-median <= tempInBuff(buffSize/2);
 o_median <= median;
 wait for 10 ns; --it's warning me of possible infinite loop
 end process;

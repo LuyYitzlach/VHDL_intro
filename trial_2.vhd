@@ -1,0 +1,537 @@
+--
+library ieee;
+use ieee.std_logic_1164.all; --for std_logic and std_logic_vector
+use ieee.numeric_std.all; --for signed and unsigned
+
+entity vending is
+port (
+      clock_50 : in std_logic;
+      reset : in std_logic;
+      add_one : in std_logic;
+      add_five : in std_logic;
+      choose_soda : in std_logic;
+      choose_chips : in std_logic;
+      get_change : in std_logic;
+      ready2vend : out std_logic;
+      ready4money : out std_logic;
+      too_much : out std_logic;
+      HEX5, HEX4, HEX3, HEX2, HEX1, HEX0 : out std_logic_vector (6 downto 0);
+      error : out std_logic;
+      decimal : out std_logic
+); 
+end vending;
+
+architecture arch of vending is
+--declarations (type, signal, record, constants, components)
+type vend_state is (zeroD, oneD, twoD, threeD, fourD, fiveD, sixD, sevenD, eightD, nineD, tenD);
+signal vend_state_reg, vend_state_next : vend_state;
+
+signal HEX5_n, HEX4_n, HEX3_n, HEX2_n, HEX1_n, HEX0_n : std_logic_vector (7 downto 0);
+signal HEX5_r, HEX4_r, HEX3_r, HEX2_r, HEX1_r, HEX0_r : std_logic_vector (7 downto 0);
+signal decimal_reg : std_logic := '0';
+signal too_much_next, too_much_r : std_logic :='0';
+
+constant M : integer := 50000000;
+constant N : integer := 26;
+signal clock : std_logic;
+
+begin
+--use this for FPGA********************
+clk_div : entity work.clockTick
+generic map (M => M, N=> N)
+port map(clk => clock_50, reset => reset, clkPulse =>clock);
+--use this for TB**********************
+--clock <= clock_50;
+
+--processes, with their (local) variables
+process (clock, reset) --this process sets the registers
+begin
+     if (reset = '1') then 
+          vend_state_reg <= zeroD;
+          HEX5_r <= X"AA"; HEX4_r <= X"AA"; HEX3_r <= X"AA";
+          HEX2_r <= X"AA"; HEX1_r <= X"AA"; HEX0_r <= X"AA";
+          decimal <= '1';
+     elsif (clock'event and clock = '1') then
+          vend_state_reg <= vend_state_next;
+          decimal <= decimal_reg;
+          too_much_r <= too_much_next;
+          HEX5_r <= HEX5_n; HEX4_r <= HEX4_n; HEX3_r <= HEX3_n;
+          HEX2_r <= HEX2_n; HEX1_r <= HEX1_n; HEX0_r <= HEX0_n;
+     end if;
+end process;
+
+process (add_one, add_five, choose_soda, choose_chips, get_change, vend_state_reg) --this is the concurrent part
+begin
+vend_state_next <= vend_state_reg; --for when no case statement is satisfied
+
+case vend_state_reg is
+--in state zero dollar
+     when zeroD =>
+             ready2vend <= '0';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+          ---   
+          if add_one = '1' then 
+             vend_state_next <= oneD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"01"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif add_five = '1' then --add five dollars
+             vend_state_next <= fiveD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"05"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if;        
+
+          ---
+          if ((choose_soda = '1') or (choose_chips = '1') or (get_change = '1')) then
+              error <= '1';
+          else
+              error <= '0';
+          end if;
+
+--in state one dollar
+     when oneD =>
+             ready2vend <= '0';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= twoD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"02"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= sixD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"06"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if;        
+
+          ---
+          if ((choose_soda = '1') or (choose_chips = '1')) then
+              error <= '1';
+          else
+              error <= '0';
+          end if;
+
+--in state two dollar
+     when twoD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= threeD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"03"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif (add_five = '1') then --add five dollars
+             decimal_reg <= '0';
+             vend_state_next <= sevenD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"07"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= zeroD; --spent it all
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if;        
+
+          ---
+          if ((choose_soda = '1')) then
+              error <= '1';
+          else
+              error <= '0';
+          end if;
+
+          ---      
+
+--in state three dollar-------
+      when threeD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= fourD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"04"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= eightD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"08"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= oneD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if;        
+
+--in state four dollar-------
+      when fourD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= fiveD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"05"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= nineD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"09"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= twoD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= oneD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if;  
+
+--in state five dollar-------
+      when fiveD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             too_much_next <= too_much_r;
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= sixD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"06"; HEX1_n <= X"00"; HEX0_n <= X"00";
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= threeD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= twoD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r; 
+          end if; 
+
+
+--in state six dollar
+      when sixD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= sevenD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"07"; HEX1_n <= X"00"; HEX0_n <= X"00";
+             too_much_next <= '0';
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+             too_much_next <= '1';
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= fourD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+             too_much_next <= '0';
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= threeD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+             too_much_next <= '0';
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+             too_much_next <= '0';
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r;
+             too_much_next <= too_much_r; 
+          end if; 
+
+--in state seven dollar
+      when sevenD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= eightD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"08"; HEX1_n <= X"00"; HEX0_n <= X"00";
+             too_much_next <= '0';
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+             too_much_next <= '1';
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= fiveD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+             too_much_next <= '0';
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= fourD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+             too_much_next <= '0';
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+             too_much_next <= '0';
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r;
+             too_much_next <= too_much_r; 
+          end if; 
+
+--in state eight dollar
+      when eightD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= nineD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"AA";
+             HEX2_n <= X"09"; HEX1_n <= X"00"; HEX0_n <= X"00";
+             too_much_next <= '0';
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+             too_much_next <= '1';
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= sixD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+             too_much_next <= '0';
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= fiveD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+             too_much_next <= '0';
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+             too_much_next <= '0';
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r;
+             too_much_next <= too_much_r; 
+          end if; 
+
+--in state nine dollar
+      when nineD =>
+             ready2vend <= '1';
+             ready4money <= '1';
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= tenD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00";
+             too_much_next <= '0';
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+             too_much_next <= '1';
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= sevenD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+             too_much_next <= '0';
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= sixD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+             too_much_next <= '0';
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+             too_much_next <= '0';
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r;
+             too_much_next <= too_much_r; 
+          end if; 
+
+--in state ten dollar
+      when tenD =>
+             ready2vend <= '1';
+             ready4money <= '0';
+             error <= '0';
+          ---   
+          if (add_one = '1') then 
+             vend_state_next <= tenD; --add one dollar
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00";
+             too_much_next <= '1';
+          elsif (add_five = '1') then --add five dollars
+             vend_state_next <= tenD;
+             decimal_reg <= '0';
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"01";
+             HEX2_n <= X"00"; HEX1_n <= X"00"; HEX0_n <= X"00"; 
+             too_much_next <= '1';
+          elsif (choose_chips = '1') then --subtract money and display "-chips"
+             vend_state_next <= eightD;
+             decimal_reg <= '1';
+             HEX5_n <= X"AA"; HEX4_n <= X"43"; HEX3_n <= X"48";
+             HEX2_n <= X"49"; HEX1_n <= X"50"; HEX0_n <= X"53"; 
+             too_much_next <= '0';
+          elsif (choose_soda = '1') then --subtract money and display "--soda"
+             vend_state_next <= sevenD;
+             HEX5_n <= X"AA"; HEX4_n <= X"AA"; HEX3_n <= X"53";
+             HEX2_n <= X"4F"; HEX1_n <= X"44"; HEX0_n <= X"41";
+             too_much_next <= '0';
+          elsif (get_change = '1') then --go back to zero dollars and display "change"
+             vend_state_next <= zeroD;
+             decimal_reg <= '1';
+             HEX5_n <= X"43"; HEX4_n <= X"48"; HEX3_n <= X"41";
+             HEX2_n <= X"4E"; HEX1_n <= X"47"; HEX0_n <= X"45"; 
+             too_much_next <= '0';
+          else --else keep everything as is
+             vend_state_next <= vend_state_reg;
+             decimal_reg <= decimal_reg;
+             HEX5_n <= HEX5_r; HEX4_n <= HEX4_r; HEX3_n <= HEX3_r;
+             HEX2_n <= HEX2_r; HEX1_n <= HEX1_r; HEX0_n <= HEX0_r;
+             too_much_next <= too_much_r; 
+          end if; 
+
+---
+end case;
+end process;
+--instantiation/components (these could also be in declaration section)
+--combinatorial expressions
+
+
+---seven segment displays
+SS5 : entity work.hexToSevenSegment
+port map (hexNumber => HEX5_r, sevenSegmentActiveLow => HEX5);
+
+SS4 : entity work.hexToSevenSegment
+port map (hexNumber => HEX4_r, sevenSegmentActiveLow => HEX4);
+
+SS3 : entity work.hexToSevenSegment
+port map (hexNumber => HEX3_r, sevenSegmentActiveLow => HEX3);
+
+SS2 : entity work.hexToSevenSegment
+port map (hexNumber => HEX2_r, sevenSegmentActiveLow => HEX2);
+
+SS1 : entity work.hexToSevenSegment
+port map (hexNumber => HEX1_r, sevenSegmentActiveLow => HEX1);
+
+SS0 : entity work.hexToSevenSegment
+port map (hexNumber => HEX0_r, sevenSegmentActiveLow => HEX0);
+
+--reg to output
+too_much <= too_much_r;
+
+end arch;
+
